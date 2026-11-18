@@ -15,4 +15,4 @@
 <ItemGroup>
 <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.15" />
 <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.15" PrivateAssets="all" />
-</ItemGroup></Project>
+</ItemGroup><ItemGroup><PackageReference Include="Mapster" Version="10.0.14" /><PackageReference Include="Mapster.DependencyInjection" Version="10.0.14" /></ItemGroup></Project>

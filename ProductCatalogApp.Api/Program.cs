@@ -1,3 +1,6 @@
+using Mapster;
+using MapsterMapper;
+using ProductCatalogApp.Api.Mapping;
 using ProductCatalogApp.Api.Hubs;
 using ProductCatalogApp.Api.Services;
 using Microsoft.AspNetCore.Identity;
@@ -52,6 +55,12 @@ builder.Services.AddHostedService<SensorSimulator>();
 builder.Services.AddCors(options => options.AddPolicy("Client", policy => policy
     .WithOrigins(builder.Configuration["Cors:ClientOrigin"] ?? "http://localhost:5034")
     .AllowAnyHeader().AllowAnyMethod().AllowCredentials()));
+
+var mapping = new TypeAdapterConfig();
+new CatalogProfile().Register(mapping);
+mapping.Compile();
+builder.Services.AddSingleton(mapping);
+builder.Services.AddScoped<IMapper, ServiceMapper>();
 
 var app = builder.Build();
 
